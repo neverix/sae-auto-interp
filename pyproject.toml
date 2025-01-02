@@ -16,7 +16,7 @@ dependencies = [
     "sae@git+https://github.com/EleutherAI/sae",
     "safetensors",
     "simple_parsing",
-    "torchtyping",
+    "torchtyping>=0.1.5",
     "fire",
     "blobfile",
     "transformer_lens",
@@ -24,7 +24,8 @@ dependencies = [
     "flask",
     "vllm",
     "aiofiles",
-    "sentence_transformers"
+    "sentence_transformers",
+    "dspy>=2.6.0rc5"
 ]
 
 [tool.pyright]
