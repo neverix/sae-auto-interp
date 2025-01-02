@@ -1,19 +1,14 @@
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "sae_auto_interp"
 version = "0.1.0"
 description = "Automated Interpretability"
 readme = "README.md"
 requires-python = ">=3.10"
-keywords = ["interpretability", "explainable-ai"]
 dependencies = [
     "datasets",
     "nnsight",
     "orjson",
-    "sae@git+https://github.com/EleutherAI/sae",
+    "sae",
     "safetensors",
     "simple_parsing",
     "torchtyping>=0.1.5",
@@ -24,17 +19,18 @@ dependencies = [
     "flask",
     "vllm",
     "aiofiles",
-    "sentence_transformers",
-    "dspy>=2.6.0rc5"
+    "sentence-transformers",
+    "dspy>=2.6.0rc5",
+]
+dev-dependencies = [
+    "pyright",
+    "ruff",
 ]
 
-[tool.pyright]
-include = ["sae_auto_interp*"]
-reportPrivateImportUsage = false
+[sources.sae]
+git = "https://github.com/EleutherAI/sae"
 
-[tool.setuptools.packages.find]
-include = ["sae_auto_interp*"]
-
+# ruff configuration (preserved from the original pyproject.toml)
 [tool.ruff]
 # TODO: Clean up or remove experiments folder.
 exclude = ["experiments", "**/prompts/*", "**/prompts.py","**/simulator.py"]
@@ -49,3 +45,6 @@ line-length = 88
 # Enable pycodestyle (`E`), Pyflakes (`F`), and isort (`I`) codes
 # See https://beta.ruff.rs/docs/rules/ for more possible rules
 select = ["E", "F", "I"]
+
+[tool.uv.sources]
+sae = { git = "https://github.com/EleutherAI/sae" }
